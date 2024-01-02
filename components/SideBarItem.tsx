@@ -4,14 +4,14 @@ import { IconType } from 'react-icons';
 import Link  from 'next/link'
 import { twMerge } from 'tailwind-merge';
 
-interface SideBarItemType {
+interface SideBarItemProps {
   icon: IconType;
   label: string;
   active?: boolean;
   href: string;
 }
 
-export default function SideBarItem({ icon: Icon, label, active, href } : SideBarItemType) {
+export default function SideBarItem({ icon: Icon, label, active, href } : SideBarItemProps) {
   return (
     <Link href={href} 
       className={twMerge(`flex flex-row h-auto items-center w-full gap-x-4 text-base font-medium 
