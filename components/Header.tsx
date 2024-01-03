@@ -6,7 +6,8 @@ import { twMerge } from 'tailwind-merge';
 
 import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
 import { HiHome } from 'react-icons/hi';
-import { BiLoaderCircle, BiSearch } from 'react-icons/bi';
+import { BiSearch } from 'react-icons/bi';
+import { RiLoader3Fill } from 'react-icons/ri';
 
 import { Button } from './Button';
 import { useAuthModal } from '@/hooks/useAuthModal';
@@ -72,7 +73,7 @@ export default function Header({ children, className } : { children: React.React
               <Button onClick={handleLogout} className='bg-white px-6 py-2 flex items-center'>
                 {isLoading ? (
                   <div className='h-[25px] w-[50px] flex items-center justify-center'>
-                    <BiLoaderCircle size={20} className='animate-spin' />
+                    <RiLoader3Fill size={20} className='animate-spin' />
                   </div>
                 ) : (
                   <div className='h-[25px] w-[50px] flex items-center justify-center'>
@@ -83,7 +84,7 @@ export default function Header({ children, className } : { children: React.React
               </Button>
 
               <Button onClick={() => router.push('/account')} className='bg-white'>
-                <FaUser />
+                <FaUser size={17} className='m-1' />
               </Button>
             </div>
           ) : (
