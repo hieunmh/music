@@ -5,10 +5,8 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { getSongs } from './getSongs';
  
-export const getSongByTitle = async (title: string): Promise<Song[]> => {
+const getSongByTitle = async (title: string): Promise<Song[]> => {
   const supabase = createServerComponentClient<Database>({ cookies });
-
-  const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
 
   if (!title) {
     const allSongs = await getSongs();
@@ -26,3 +24,5 @@ export const getSongByTitle = async (title: string): Promise<Song[]> => {
 
   return (data as any) || [];
 }
+
+export default getSongByTitle;

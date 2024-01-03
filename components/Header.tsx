@@ -17,8 +17,13 @@ import { useSupabaseClient } from '@supabase/auth-helpers-react';
 import { FaUser } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 
+interface HeaderProps {
+  children: React.ReactNode;
+  className?: string;
+}
 
-export default function Header({ children, className } : { children: React.ReactNode, className: string }) {
+
+const Header: React.FC<HeaderProps> = ({ children, className }) => {
 
   const router = useRouter();
   const authModal = useAuthModal();
@@ -59,10 +64,10 @@ export default function Header({ children, className } : { children: React.React
         </div>
 
         <div className='flex md:hidden gap-x-2 items-center'>
-          <button className='rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition'>
+          <button onClick={() => router.push('/')} className='rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition'>
             <HiHome className='text-black' size={20} />
           </button>
-          <button className='rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition'>
+          <button onClick={() => router.push('/search')} className='rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition'>
             <BiSearch className='text-black' size={20} />
           </button>
         </div>
@@ -108,3 +113,5 @@ export default function Header({ children, className } : { children: React.React
     </div>
   )
 }
+
+export default Header;
