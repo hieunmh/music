@@ -59,7 +59,7 @@ export const UploadModal = () => {
       //Upload song
       const { data: songData, error: songError } = await 
         supabaseClient.storage.from('songs')
-        .upload(`song-${values.title}-${uniqueID}`, songFile, { cacheControl: '3600', upsert: false });
+        .upload(`song-${values.title}-${values.author}-${uniqueID}`, songFile, { cacheControl: '3600', upsert: false });
       
       if (songError) {
         setIsLoading(false);
@@ -69,7 +69,7 @@ export const UploadModal = () => {
       // Upload image
       const { data: imageData, error: imageError } = await 
         supabaseClient.storage.from('images')
-        .upload(`image-${values.title}-${uniqueID}`, imageFile, { cacheControl: '3600', upsert: false });
+        .upload(`image-${values.title}-${values.author}-${uniqueID}`, imageFile, { cacheControl: '3600', upsert: false });
       
       if (imageError) {
         setIsLoading(false);
@@ -109,12 +109,12 @@ export const UploadModal = () => {
     >
       <form onSubmit={handleSubmit(onsubmit)} className='flex flex-col gap-y-4'>
         <Input id='title' disabled={isLoading} 
-          {...register('Song title', { required: true })} 
+          {...register('title', { required: true })} 
           placeholder='Song title' 
         />
 
         <Input id='author' disabled={isLoading} 
-          {...register('Song author', { required: true })} 
+          {...register('author', { required: true })} 
           placeholder='Song author' 
         />
 
@@ -133,15 +133,15 @@ export const UploadModal = () => {
         </div>
 
         <Button disabled={isLoading} type='submit'>
-        {isLoading ? (
-          <div className='h-[25px] flex items-center justify-center'>
-            Uploading...
-          </div>
-        ) : (
-          <div className='h-[25px] flex items-center justify-center'>
-            Create
-          </div>
-        )}
+          {isLoading ? (
+            <div className='h-[25px] flex items-center justify-center'>
+              Uploading...
+            </div>
+          ) : (
+            <div className='h-[25px] flex items-center justify-center'>
+              Create
+            </div>
+          )}
         </Button>
       </form>
     </Modal>
