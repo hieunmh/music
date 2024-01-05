@@ -135,7 +135,7 @@ export const UploadModal = () => {
         <Button disabled={isLoading} type='submit'>
           {isLoading ? (
             <div className='h-[25px] flex items-center justify-center'>
-              Uploading...
+              Uploading . . .
             </div>
           ) : (
             <div className='h-[25px] flex items-center justify-center'>

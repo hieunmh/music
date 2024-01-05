@@ -3,11 +3,11 @@
 import { useLoadImage } from '@/hooks/useLoadImage';
 import { Song } from '@/types/types';
 import Image from 'next/image';
-import { PlayButton } from '../PlayButton';
+import { PlayButton } from '../Play/PlayButton';
 
 interface SongItemProps {
   data: Song;
-  onClick: (id: number) => void;
+  onClick: (id: string) => void;
 }
 
 export const SongItem: React.FC<SongItemProps> = ({ data, onClick }) => {
